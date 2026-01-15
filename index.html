@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Safa | Stranger Things</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Indie+Flower&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="bgm" loop>
+        <source src="theme.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="countdown-screen">
+        <div class="timer-content">
+            <h1 class="stranger-title">THE GATE OPENS IN</h1>
+            <div id="timer">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <span class="label">DAYS</span>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <span class="label">HOURS</span>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <span class="label">MINS</span>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <span class="label">SECS</span>
+                </div>
+            </div>
+            <p class="subtitle" style="margin-top: 20px;">WAIT FOR THE SIGNAL</p>
+        </div>
+    </section>
+
+    <section id="intro-screen" class="hidden"> 
+        <div class="content">
+            <h1 class="stranger-title">
+                <span class="line-1">HAPPY</span>
+                <br>
+                <span class="line-2">BIRTHDAY</span>
+            </h1>
+            
+            <div class="login-container">
+                <p class="terminal-text">HAWKINS LAB SECURITY CLEARANCE</p>
+                <p class="hint-text">QUESTION: Where was our first date location?</p>
+                <input type="text" id="passcode" placeholder="TYPE HERE..." autocomplete="off">
+                <div id="error-msg" class="hidden">ACCESS DENIED</div>
+                <button id="start-btn">UNLOCK GATE</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="wall-screen" class="hidden">
+        <div class="wall-container">
+            <div id="alphabet-grid">
+                </div>
+        </div>
+        <div id="message-log">...</div>
+    </section>
+
+    <section id="upside-down" class="hidden">
+        
+        <div class="mission-ui">
+            FIND 3 EGGOS TO ESCAPE: <span id="waffle-count">0</span>/3 🧇
+        </div>
+
+        <div class="spores-container">
+            <div class="spore"></div><div class="spore"></div><div class="spore"></div>
+            <div class="spore"></div><div class="spore"></div>
+        </div>
+
+        <div class="gallery-container">
+            <h2 class="upside-title">OUR MEMORIES...</h2>
+            <div class="photo-grid">
+                <img src="assets/foto2.jpeg" class="memory-photo p1">
+                <img src="assets/foto10.jpeg" class="memory-photo p2">
+                <img src="assets/foto13.jpeg" class="memory-photo p3">
+                <img src="assets/foto18.jpeg" class="memory-photo p4">
+                <img src="assets/foto19.jpeg" class="memory-photo p5">
+                <img src="assets/foto24.jpeg" class="memory-photo p6">
+                <img src="assets/foto25.jpeg" class="memory-photo p7">
+                <img src="assets/foto26.jpeg" class="memory-photo p8">
+                <img src="assets/foto34.jpeg" class="memory-photo p9"> 
+                <img src="assets/foto35.jpeg" class="memory-photo p10">
+            </div>
+        </div>
+
+        <div class="waffle" id="waffle1" style="top: 20%; left: 10%;">🧇</div>
+        <div class="waffle" id="waffle2" style="top: 80%; left: 80%;">🧇</div>
+        <div class="waffle" id="waffle3" style="top: 50%; left: 40%;">🧇</div>
+
+        <div id="flashlight-overlay"></div>
+
+        <button id="final-btn" class="hidden">PORTAL OPENED</button>
+
+    </section>
+
+    <section id="letter-screen" class="hidden">
+        <div class="letter-content">
+            <h1>Dear Safa,</h1>
+            <p>
+                Selamat ulang tahun!, sayangg🎉<br><br>
+                Mungkin website ini sedikit aneh dan menyeramkan di awal, 
+                sama seperti petualangan di Hawkins. Tapi aku cuma mau bilang, 
+                dunia mungkin bisa terbalik (Upside Down), tapi perasaanku ke kamu 
+                nggak akan pernah berubah.<br><br>
+                Kamu nggak perlu berjuang sendirian di "Hawkins" ini, karena aku akan 
+                selalu ada di samping kamu. Terima kasih sudah mau bertahan sampai hari ini. 
+                Kamu hebat, my Eleven..<br><br>
+
+                <i>- Your Stranger Boy (Rfly)</i>
+            </p>
+            <button onclick="location.reload()">REPLAY EPISODE</button>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

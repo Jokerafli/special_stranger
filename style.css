@@ -1,0 +1,483 @@
+:root {
+    --stranger-red: #e71d23;
+    --wall-bg: #f3e6d5; /* Warna dinding rumah Joyce */
+    --bulb-off: #444;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    font-family: 'Libre Baskerville', serif;
+    overflow: hidden;
+}
+
+/* --- INTRO STYLES --- */
+#intro-screen {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000;
+    background: #000;
+    transition: opacity 1.5s ease;
+}
+
+.stranger-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 5rem;
+    text-transform: uppercase;
+    /* Teknik Outline Merah Khas Stranger Things */
+    -webkit-text-stroke: 2px var(--stranger-red);
+    color: transparent; 
+    letter-spacing: -5px;
+    filter: drop-shadow(0 0 10px var(--stranger-red));
+    animation: pulse 3s infinite;
+}
+
+.subtitle {
+    color: var(--stranger-red);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 5px;
+    margin-top: -20px;
+    font-size: 1.2rem;
+}
+
+#start-btn {
+    margin-top: 50px;
+    padding: 15px 40px;
+    background: transparent;
+    border: 1px solid var(--stranger-red);
+    color: var(--stranger-red);
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#start-btn:hover {
+    background: var(--stranger-red);
+    color: #000;
+    box-shadow: 0 0 20px var(--stranger-red);
+}
+
+/* --- WALL STYLES --- */
+.hidden {
+    display: none !important;
+}
+
+#wall-screen {
+    height: 100vh;
+    background: url('https://www.transparenttextures.com/patterns/floral-linen.png'), #dcbfa6; /* Texture bunga */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Efek Vignette (Gelap di pinggir) */
+#wall-screen::after {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: radial-gradient(circle, transparent 50%, #000 150%);
+    pointer-events: none;
+}
+
+.wall-container {
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+#alphabet-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.letter-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+}
+
+.bulb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: var(--bulb-off);
+    margin-bottom: 10px;
+    box-shadow: inset -2px -2px 5px rgba(0,0,0,0.5);
+    transition: all 0.1s;
+}
+
+.char {
+    font-family: 'Indie Flower', cursive; /* Font tulisan tangan */
+    font-weight: bold;
+    font-size: 2rem;
+    color: #000;
+}
+
+/* Warna-warni Lampu */
+.bulb.red.active { background: #ff0000; box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; }
+.bulb.blue.active { background: #00ccff; box-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff; }
+.bulb.green.active { background: #00ff00; box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00; }
+.bulb.yellow.active { background: #ffff00; box-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00; }
+
+#message-log {
+    margin-top: 30px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    color: #333;
+    min-height: 30px;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; text-shadow: 0 0 20px var(--stranger-red), 0 0 40px var(--stranger-red); }
+    100% { opacity: 0.8; }
+}
+
+
+/* --- UPSIDE DOWN STYLES --- */
+#upside-down {
+    height: 100vh;
+    background: linear-gradient(to bottom, #0a0a14, #1b1b2f); /* Warna biru gelap dingin */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upside-title {
+    font-family: 'Creepster', cursive; /* Font horror */
+    color: rgba(255,255,255,0.7);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #000;
+}
+
+/* Gallery Layout */
+.gallery-container {
+    position: relative;
+    z-index: 1; /* Di bawah flashlight */
+    width: 80%;
+}
+
+.photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.memory-photo {
+    width: 200px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    filter: grayscale(50%) sepia(20%) brightness(0.7); /* Efek foto lama dan gelap */
+    transition: transform 0.3s;
+}
+
+/* Sedikit rotasi acak agar terlihat natural */
+.p1 { transform: rotate(-5deg); }
+.p2 { transform: rotate(3deg); margin-top: 50px;}
+.p3 { transform: rotate(-2deg); }
+.p4 { transform: rotate(4deg); margin-top: -30px;}
+.p5 { transform: rotate(-3deg); }
+
+/* --- THE FLASHLIGHT EFFECT (MAGIC HAPPENS HERE) --- */
+#flashlight-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 2; /* Di atas foto */
+    /* Kita akan update --x dan --y lewat Javascript */
+    background: radial-gradient(circle 180px at var(--x, 50%) var(--y, 50%), 
+                transparent 0%, 
+                rgba(0, 0, 10, 0.98) 100%); /* Lingkaran transparan di tengah kegelapan */
+    pointer-events: none; /* Agar mouse tembus ke elemen di bawahnya */
+    transition: background 0.1s ease; /* Gerakan halus */
+}
+
+/* --- SPORES ANIMATION --- */
+.spores-container {
+    position: absolute;
+    top:0; left:0; width:100%; height:100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.spore {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(200, 200, 255, 0.5);
+    animation: float 15s infinite linear;
+}
+
+/* --- LETTER SCREEN (ENDING) --- */
+#letter-screen {
+    height: 100vh;
+    background-color: #fdfbf7; /* Warna kertas putih gading */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0; /* Mulai transparan untuk efek fade-in */
+    transition: opacity 3s ease;
+}
+
+.letter-content {
+    max-width: 600px;
+    background: #fff;
+    padding: 40px;
+    border: 1px solid #ddd;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Bayangan lembut */
+    text-align: center;
+    transform: translateY(20px); /* Sedikit turun */
+    animation: floatUp 1s forwards 1s; /* Animasi naik perlahan */
+}
+
+.letter-content h1 {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--stranger-red);
+    margin-bottom: 20px;
+}
+
+.letter-content p {
+    font-family: 'Indie Flower', cursive; /* Font tulisan tangan */
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.letter-content button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+}
+
+.letter-content button:hover {
+    background: var(--stranger-red);
+}
+
+/* Animasi Tombol Escape di Upside Down */
+#final-btn {
+    position: absolute;
+    bottom: 50px;
+    z-index: 10;
+    padding: 15px 30px;
+    background: rgba(231, 29, 35, 0.2); /* Merah transparan */
+    border: 1px solid var(--stranger-red);
+    color: #fff;
+    font-family: 'Creepster', cursive;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    letter-spacing: 2px;
+}
+
+#final-btn:hover {
+    background: var(--stranger-red);
+    box-shadow: 0 0 30px var(--stranger-red);
+}
+
+@keyframes floatUp {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* --- LOGIN TERMINAL STYLE --- */
+.login-container {
+    margin-top: 40px;
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+    border: 1px solid var(--stranger-red);
+    box-shadow: 0 0 15px rgba(231, 29, 35, 0.3);
+}
+
+.terminal-text {
+    font-family: 'Courier New', monospace;
+    color: #0f0; /* Hijau hacker */
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.hint-text {
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+input#passcode {
+    background: #000;
+    border: none;
+    border-bottom: 2px solid #0f0;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 2rem;
+    text-align: center;
+    width: 150px;
+    outline: none;
+    letter-spacing: 10px;
+}
+
+#error-msg {
+    color: var(--stranger-red);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* --- GAME ITEMS (WAFFLES) --- */
+.mission-ui {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20; /* Paling atas */
+    color: #fff;
+    font-family: 'Creepster', cursive;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--stranger-red);
+    pointer-events: none;
+}
+
+.waffle {
+    position: absolute;
+    font-size: 3rem;
+    z-index: 5; /* Di bawah flashlight overlay, tapi di atas background */
+    cursor: pointer;
+    /* Trik agar tidak terlalu terlihat di gelap, tapi menyala saat kena senter */
+    opacity: 0.3; 
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.waffle:hover {
+    transform: scale(1.5); /* Membesar saat kena mouse/senter */
+    opacity: 1;
+}
+
+/* Animasi saat waffle ditemukan */
+.found {
+    animation: popOut 0.5s forwards;
+}
+
+@keyframes popOut {
+    0% { transform: scale(1); }
+    50% { transform: scale(2); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+
+/* Posisi awal spora acak */
+.spore:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+.spore:nth-child(2) { top: 30%; left: 80%; animation-delay: -5s; }
+.spore:nth-child(3) { top: 70%; left: 10%; animation-delay: -2s; }
+.spore:nth-child(4) { top: 50%; left: 50%; animation-delay: -8s; }
+.spore:nth-child(5) { top: 90%; left: 70%; animation-delay: -11s; }
+
+@keyframes float {
+    0% { transform: translateY(0px) translateX(0px); opacity: 0;}
+    50% { opacity: 1; }
+    100% { transform: translateY(-100vh) translateX(50px); opacity: 0;}
+}
+
+/* --- MOBILE RESPONSIVE TWEAKS --- */
+@media (max-width: 768px) {
+    /* Font judul lebih kecil di HP agar muat */
+    .stranger-title {
+        font-size: 3rem; 
+        -webkit-text-stroke: 1px var(--stranger-red);
+    }
+    
+    .upside-title {
+        font-size: 2rem;
+    }
+
+    /* SENTER LEBIH BESAR DI HP */
+    #flashlight-overlay {
+        background: radial-gradient(circle 250px at var(--x, 50%) var(--y, 50%), 
+                    transparent 0%, 
+                    rgba(0, 0, 10, 0.98) 100%);
+    }
+
+    /* Foto ditumpuk vertikal agar rapi */
+    .photo-grid {
+        gap: 10px;
+    }
+    
+    .memory-photo {
+        width: 140px; /* Foto lebih kecil */
+    }
+}
+
+/* --- COUNTDOWN SCREEN --- */
+#countdown-screen {
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    z-index: 9999; /* Pastikan dia paling atas menutupi semuanya */
+    position: absolute; /* Kunci posisi */
+    top: 0; left: 0; width: 100%;
+}
+
+.timer-content {
+    text-align: center;
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-box span {
+    font-family: 'Courier New', monospace; /* Font digital */
+    font-weight: bold;
+}
+
+.time-box span:first-child {
+    font-size: 3rem;
+    color: var(--stranger-red);
+    text-shadow: 0 0 15px var(--stranger-red);
+}
+
+.time-box .label {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 768px) {
+    #timer { gap: 10px; }
+    .time-box span:first-child { font-size: 2rem; }
+}
